@@ -25,10 +25,10 @@ const uint8_t teclas[rows][column] = {
 // -- Inicializando e limpando as portas do teclado --;
 void keyboardInit(void)
 {
-    gpio_reset_pin(SH);                 // -- Resetando todos os pinos a serem usados --;
-    gpio_reset_pin(CLK);                // -- Resetando todos os pinos a serem usados --;
-    gpio_reset_pin(WR);                 // -- Resetando todos os pinos a serem usados --;
-    gpio_reset_pin(RD);                 // -- Resetando todos os pinos a serem usados --;
+    //gpio_reset_pin(SH);                 // -- Resetando todos os pinos a serem usados --;
+    //gpio_reset_pin(CLK);                // -- Resetando todos os pinos a serem usados --;
+    //gpio_reset_pin(WR);                 // -- Resetando todos os pinos a serem usados --;
+    //gpio_reset_pin(RD);                 // -- Resetando todos os pinos a serem usados --;
 
     // -- Configurandos as portas --;
     esp_rom_gpio_pad_select_gpio(SH);
@@ -63,7 +63,6 @@ void varredura(void)
             
         }
         gpio_set_level(WR, 0);
-        gpio_set_level(SH, 0);
     }
 }
 
@@ -73,6 +72,6 @@ void app_main(void)
     {
         keyboardInit();
         varredura();
-        vTaskDelay(10 / portTICK_PERIOD_MS); // -- Espera 10 milisegundos para proxima varredura --;
+        vTaskDelay(10); // -- Espera 10 milisegundos para proxima varredura --;
     }
 }
